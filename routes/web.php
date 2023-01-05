@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Item\ItemIndex;
+use App\Http\Livewire\Item\ItemShow;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,7 @@ Route::get('/', function () {
 // })->middleware(['auth'])->name('dashboard');
 
 Route::get('items', ItemIndex::class);
+Route::get('items/{item}', ItemShow::class);
 
 
 require __DIR__.'/auth.php';
