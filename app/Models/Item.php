@@ -36,4 +36,9 @@ class Item extends Model
         return $this->hasManyThrough(ReceivingItem::class, BatchNumber::class, 'id', 'batch_number_id', 'id' );
     }
 
+    public function initialQty()
+    {
+        return ;
+    }
+
 }

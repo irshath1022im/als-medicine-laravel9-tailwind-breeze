@@ -1,9 +1,5 @@
-@extends('layouts.app')
+<x-app>
 
 
-@section('content')
-
-
-
-
-@endsection
+    welcome to Welcome Page
+</x-app>

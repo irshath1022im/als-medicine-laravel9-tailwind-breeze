@@ -45,4 +45,6 @@ class BatchNumber extends Model
         return $this->hasMany(Consumption::class);
     }
 
+
+
 }

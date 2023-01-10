@@ -14,12 +14,11 @@
         <!-- Scripts -->
         <link rel="stylesheet" href="{{ asset('js/app.js') }}" />
 
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
         @livewireStyles
 
     </head>
-    <body class="font-sans antialiased bg-blue-200">
+    <body class="font-sans antialiased bg-blue-800">
+
 
 
      {{ $slot }}
