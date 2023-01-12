@@ -26,8 +26,22 @@
     </head>
     <body class="font-sans antialiased bg-gray-50">
 
+        <nav class="flex container mx-auto justify-end py-2 border bg-gray-500">
+            <a href="#">
+                <li class="list-none px-2 py-1 border bg-gray-500 text-white rounded">HOME</li>
+            </a>
 
-       <section class="container mx-auto">
+            <a href="{{ route('items.index') }}">
+                <li class="list-none px-2 py-1 border bg-gray-500 text-white rounded">ITEMS</li>
+            </a>
+
+            <a href="#">
+                <li class="list-none px-2 py-1 border bg-gray-500 text-white rounded">CONSUMPTIONS</li>
+            </a>
+
+        </nav>
+
+       <section class="container mx-auto mt-1">
 
            @yield('content')
        </section>

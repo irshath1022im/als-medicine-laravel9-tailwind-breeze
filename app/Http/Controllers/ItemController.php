@@ -52,6 +52,7 @@ class ItemController extends Controller
         $result = Item::findOrFail($id);
         return view('pages.items.show', ['item' => $result]);
 
+
     }
 
     /**

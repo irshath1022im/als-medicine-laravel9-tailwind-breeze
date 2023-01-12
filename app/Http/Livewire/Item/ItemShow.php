@@ -14,37 +14,41 @@ class ItemShow extends Component
     use WithPagination;
 
     public  $item_id = 1;
+    public $name;
+    public $openReceivingModal = false;
     public  $selectedBtn;
     public $activeBtn = "batches";
+    public $selectedBatchId=1;
 
     public $receivings = [];
 
 
 
-    public function updatedActiveBtn()
+    public function openReceivingModalRequest($batch_id)
     {
-        $this->selectedBtn = $this->activeBtn;
-
-        if($this->activeBtn == "batches")
-        {
-            $this->batches = BatchNumber::where('item_id', $this->item_id)
-                                    ->get();
-        }
-
-        if($this->activeBtn == "receivings")
-        {
-            $this->receivings = ReceivingItem::where('item_id', $this->item_id)
-                                    ->get();
-        }
-
+        $this->openReceivingModal = true;
+        $this->emit('getReceivingDetails', $batch_id);
     }
 
+    public function closeReceivingPanels()
+    {
+        $this->openReceivingModal = false;
+        $this->emit('closeReceivingDetails');
+    }
+
+
+
+    public function mount($item)
+    {
+        $this->item_id = $item->id;
+        $this->name = $item->name;
+    }
 
 
 
     public function render()
     {
-        $result = BatchNumber::paginate(2);
+        $result = BatchNumber::where('item_id', $this->item_id)->get();
         return view('livewire.item.item-show',['batches' => $result]);
     }
 }

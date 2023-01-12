@@ -36,7 +36,9 @@
                 <div class="card w-72 p-2 my-2 shadow-lg">
                     <div class="card-header mb-2 h-12">
                         <div class="card-heading">
-                           {{ $item->id }} / {{ $item->name }}
+                          <a href="{{ route('items.show',['item' => $item->id]) }}" >
+                            {{ $item->id }} / {{ $item->name }}
+                          </a>
                         </div>
                     </div>
 

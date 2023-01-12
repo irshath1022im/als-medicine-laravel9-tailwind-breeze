@@ -2,6 +2,6 @@
 
 @section('content')
 
-@livewire('item.item-show')
+@livewire('item.item-show',['item' => $item])
 
 @endsection
