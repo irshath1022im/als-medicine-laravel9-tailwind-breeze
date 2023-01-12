@@ -11,6 +11,8 @@ class ItemIndex extends Component
 
     public $searchValue="";
     public $showItemBatchModal = false;
+    public $orderBy='expiry_date';
+    public $sortBy= 'asc'; //desc, asc
 
     use WithPagination;
 
@@ -42,10 +44,10 @@ class ItemIndex extends Component
                         ->withCount('receiving_items_batch_number')
                         ->with(['batch_numbers' => function($query){
                              return $query->where('status','active')
-                                    ->orWhere('status', 'stored')
-                                    ->orWhere('status', 'closed')
-                                    ->orWhere('status', '')
-                                        ;
+                                            ->orWhere('status', 'stored')
+                                            ->orWhere('status', 'closed')
+                                            ->orWhere('status', '')
+                                                ;
                                 }
                                 , 'consumptions','receiving_items_batch_number'
                                 ])

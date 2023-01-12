@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Livewire\Item\ItemIndex;
-use App\Http\Livewire\Item\ItemShow;
+use App\Http\Controllers\ItemController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,8 +23,10 @@ Route::get('/', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
 
-Route::get('items', ItemIndex::class);
-Route::get('items/{item}', ItemShow::class);
+// Route::get('items', ItemIndex::class);
+// Route::get('items/{item}', ItemShow::class);
 
+
+Route::resource('items', ItemController::class);
 
 require __DIR__.'/auth.php';

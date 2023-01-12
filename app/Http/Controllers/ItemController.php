@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -13,7 +14,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return view('livewire.item.item-index');
+        return view('pages.items.index');
     }
 
     /**
@@ -24,6 +25,7 @@ class ItemController extends Controller
     public function create()
     {
         //
+        return view('pages.items.create');
     }
 
     /**
@@ -35,6 +37,7 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
     /**
@@ -46,6 +49,9 @@ class ItemController extends Controller
     public function show($id)
     {
         //
+        $result = Item::findOrFail($id);
+        return view('pages.items.show', ['item' => $result]);
+
     }
 
     /**
@@ -57,6 +63,8 @@ class ItemController extends Controller
     public function edit($id)
     {
         //
+        $result = Item::findOrFail($id);
+        return view('pages.items.create',['item' => $result]);
     }
 
     /**

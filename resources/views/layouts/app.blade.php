@@ -27,9 +27,10 @@
     <body class="font-sans antialiased bg-gray-50">
 
 
+       <section class="container mx-auto">
 
-     {{ $slot }}
-
+           @yield('content')
+       </section>
 
         @livewireScripts
     </body>

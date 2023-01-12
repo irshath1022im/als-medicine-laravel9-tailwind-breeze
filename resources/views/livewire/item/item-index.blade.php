@@ -68,7 +68,7 @@
                                 <button class="btn  bg-red-300"
                                 wire:click="openItemBatchModal({{ $item->id }})"
                                 >
-                                    No Stock
+                                    Out Of Stock
                                 </button>
 
                             @endif
