@@ -11,16 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('batch_numbers', function (Blueprint $table) {
+        Schema::create('receiving_items', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            $table->string('batch_number');
+            $table->unsignedBigInteger('receiving_id');
             $table->unsignedBigInteger('item_id');
-            $table->date('expiry_date');
-            $table->integer('initial_qty')->nullable();
-            $table->string('barcode')->nullable();
-            $table->string('status')->default('active');
+            $table->unsignedBigInteger('batch_number_id');
+            $table->integer('qty');
+            $table->decimal('unit_price', 8, 2);
+            $table->decimal('cost', 8, 2);
+            $table->text('remark')->nullable();
+
             $table->foreign('item_id')->references('id')->on('items');
+            $table->foreign('batch_number_id')->references('id')->on('batch_numbers');
+            $table->foreign('receiving_id')->references('id')->on('receivings');
             $table->timestamps();
         });
     }
@@ -30,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('batch_numbers');
+        Schema::dropIfExists('receiving_items');
     }
 };
