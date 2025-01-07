@@ -22,10 +22,10 @@
 
     </div>
 
-    <div class="container  mx-auto p-5 text-center" wire:loading >
+    {{-- <div class="container  mx-auto p-5 text-center" wire:loading >
         <x-spinner></x-spinner>
 
-    </div>
+    </div> --}}
 
 
 
