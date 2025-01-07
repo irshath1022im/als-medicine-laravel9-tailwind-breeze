@@ -14,7 +14,6 @@
         <!-- Scripts -->
         <link rel="stylesheet" href="{{ asset('js/app.js') }}" />
 
-        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <style>
             [x-cloak] {
            display: none !important;
@@ -31,7 +30,7 @@
                 <li class="list-none px-2 py-1 border bg-gray-500 text-white rounded">HOME</li>
             </a>
 
-            <a href="{{ route('items.index') }}">
+            <a href="{{ route('itemHome') }}">
                 <li class="list-none px-2 py-1 border bg-gray-500 text-white rounded">ITEMS</li>
             </a>
 

@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ItemController;
-
+use App\Livewire\Item\ItemIndex;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +27,10 @@ Route::get('/', function () {
 // Route::get('items/{item}', ItemShow::class);
 
 
-Route::resource('items', ItemController::class);
+Route::get('items', ItemIndex::class)->name('itemHome');
+
+// Route::resource('items', ItemController::class);
+
+
 
 require __DIR__.'/auth.php';

@@ -3,6 +3,7 @@
     x-cloak
 >
 
+{{-- @dump($items) --}}
     <div class="container mx-auto pt-10 px-10  relative">
         <input type="text" placeholder="Search Item" class="form-controll relative" wire:model="searchValue">
 
@@ -25,18 +26,18 @@
     {{-- <div class="container  mx-auto p-5 text-center" wire:loading >
         <x-spinner></x-spinner>
 
-    </div> --}}
+        </div> --}}
 
 
 
     <div class="flex justify-between flex-wrap container mx-auto px-10 " >
 
             @foreach ($items as $item)
-            {{-- @dump($item) --}}
+
                 <div class="card w-72 p-2 my-2 shadow-lg">
                     <div class="card-header mb-2 h-12">
                         <div class="card-heading">
-                          <a href="{{ route('items.show',['item' => $item->id]) }}" >
+                          <a href="" >
                             {{ $item->id }} / {{ $item->name }}
                           </a>
                         </div>
@@ -75,17 +76,6 @@
 
                             @endif
 
-
-
-
-                                {{-- @foreach ($item->batch_numbers as $batchNumber)
-                                    <button class="btn border-blue-300  bg-blue-200 ">
-                                        <span class="rounded-full py-1 px-3 bg-orange-200">
-                                            {{ $batchNumber->batch_number }} \
-                                            {{ $batchNumber->initial_qty }}\{{ $batchNumber->receiving_items->sum('qty') }} \{{ $batchNumber->consumptions->sum('qty')}}</span>
-                                    </button>
-                                @endforeach --}}
-
                             @else
 
                                 <button class="btn bg-blue-200">
@@ -108,6 +98,8 @@
 
     </div>
 
+
+
     <div class="container mx-auto px-10">
 
         {{ $items->links() }}
@@ -119,14 +111,14 @@
         x-show="modalShow"
     >
 
-        {{-- Overlay --}}
+
         <div
             x-transition.opacity
             class="fixed inset-0 bg-black bg-opacity-50">
 
         </div>
 
-    <!-- Panel -->
+
 
             <div  class="relative flex min-h-screen items-center justify-center p-2">
 
@@ -144,9 +136,9 @@
                     </div>
 
                     <div class="ooverflow-x-auto rounded-lg shadow">
-                        @livewire('item.item-batches')
 
-                        </table>
+                       <livewire:Item.item-batches />
+
                     </div>
                 </div>
 

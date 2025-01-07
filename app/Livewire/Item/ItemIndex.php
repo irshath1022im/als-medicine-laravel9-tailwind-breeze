@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Item;
+namespace App\Livewire\Item;
 
 use App\Models\Item;
 use Livewire\Component;
@@ -24,7 +24,7 @@ class ItemIndex extends Component
     public function openItemBatchModal($item_id)
     {
         $this->showItemBatchModal = true;
-        $this->emit('getBatchDetails', $item_id);
+        $this->dispatch('getBatchDetails', $item_id);
     }
 
     public function closeItemBatchModal()
@@ -54,6 +54,9 @@ class ItemIndex extends Component
                             ->where('name', 'like', '%'.$this->searchValue.'%')
                             ->paginate(10);
 
-        return view('livewire.item.item-index',['items'=>$result]);
+
+        return view('livewire.item.item-index',['items'=>$result])
+            ->extends('components.layouts.app')
+        ;
     }
 }
