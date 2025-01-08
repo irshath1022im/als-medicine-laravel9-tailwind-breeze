@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ItemController;
 use App\Livewire\Item\ItemIndex;
+use App\Livewire\Item\ItemShow;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,7 @@ Route::get('/', function () {
 
 
 Route::get('items', ItemIndex::class)->name('itemHome');
+Route::get('items/{item_id}', ItemShow::class)->name('itemShow');
 
 // Route::resource('items', ItemController::class);
 

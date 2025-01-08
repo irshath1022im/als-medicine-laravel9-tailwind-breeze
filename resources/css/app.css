@@ -30,12 +30,33 @@
     }
 }
 
+
+
 @layer components{
     .form-controll{
         @apply w-full my-2 rounded-md shadow-sm border border-gray-200 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
     }
 
     .form-label{
-        @apply text-sm font-medium
+        @apply p-2 bg-slate-300 font-['lato'] rounded-md font-bold
     }
+
+    .btn-close {
+        @apply  bg-red-700 hover:bg-red-900 hover:text-white text-white
+    }
+
+    .btn-submit {
+        @apply  bg-green-500 hover:bg-green-900 hover:text-white text-white
+    }
+
+    .btn-update {
+        @apply bg-orange-500 hover:bg-orange-800 hover:text-white text-white
+    }
+    .btn-info {
+        @apply bg-orange-600 hover:bg-orange-900 text-white hover:text-white
+    }
+    .btn-blue {
+        @apply bg-blue-600 hover:bg-blue-900 text-white hover:text-white
+    }
+
 }

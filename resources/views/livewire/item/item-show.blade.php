@@ -2,7 +2,9 @@
     x-cloak
     x-data="{
             openReceivingModal : @entangle('openReceivingModal'),
-            openConsumptionModal : false, openBatchModal: false}"
+            openConsumptionModal : false,
+            openBatchModal: false
+            }"
 
 >
 
@@ -25,8 +27,11 @@
      <section class="md:flex mt-2">
 
         <div class="card md:basis-1/3">
-            <div class="card-header">
-                <div class="card-heading">{{ $name }}</div>
+            <div class="card-header flex justify-between">
+                <div class="card-heading">{{ $item->name }}</div>
+                <div>
+                   <x-buttons.infobtn message="{{ $item->erp_code }}" />
+                </div>
             </div>
 
             <div class="card-body">
@@ -38,7 +43,11 @@
 
         {{-- details --}}
 
-        <div x-data="{activeBtn : @entangle('activeBtn')}" class=" md:basis-3/4 p-2 ml-1 border">
+        <div
+            x-data="{
+                activeBtn : @entangle('activeBtn')
+                }"
+             class=" md:basis-3/4 p-2 ml-1 border">
 
                         @foreach ($batches as $batch)
                             <div class="flex p-2 border mb-1 uppercase" >
@@ -120,7 +129,7 @@
 
             <div class=" relative bg-white w-full max-w-4xl rounded-xl p-12 shadow-lg overflow-y-auto">
 
-                    @livewire('item.batch-receiving-items')
+                    {{-- @livewire('item.batch-receiving-items') --}}
 
                 <div class="text-end mt-5">
                     <x-button wire:click="closeReceivingPanels">Close</x-button>
@@ -208,7 +217,7 @@
 
          <div class="bg-white w-full max-w-4xl rounded-xl p-12 shadow-lg overflow-y-auto">
 
-            @livewire('item.new-item-batch-form')
+            @livewire('item.new-item-batch-form', ['item_id' => $item_id])
 
              <div class="text-end mt-5">
                  <x-button x-on:click="openBatchModal = false">Close</x-button>
