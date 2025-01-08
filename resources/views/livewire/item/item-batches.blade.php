@@ -6,7 +6,7 @@
 
     <div class="flex">
         <button class="btn basis-">Item ID <span class="rounded-lg py-1 px-3 border-2 border-orange-600 " wire:loading.remove>{{ $item_id }}</span> </button>
-        <select class="form-controll basis-3/4" type="select" wire:model="filteredBy">
+        <select class="form-controll basis-3/4" type="select" wire:model.live="filteredBy">
 
                 <option value="">All</option>
                 <option value="active">Active</option>
@@ -42,6 +42,8 @@
             </tr>
             @endforeach
         </tbody>
+
+    </table>
 
 
 </div>

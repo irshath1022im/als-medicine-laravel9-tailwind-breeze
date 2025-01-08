@@ -5,14 +5,14 @@
 
 {{-- @dump($items) --}}
     <div class="container mx-auto pt-10 px-10  relative">
-        <input type="text" placeholder="Search Item" class="form-controll relative" wire:model="searchValue">
+
+        <input type="text" placeholder="Search Item" class="form-controll relative" wire:model.live="searchValue">
 
 
         @if ($searchValue)
 
             <div class="absolute pt-10 px-10 top-5 right-5"
-                wire:click="resetSearch()"
-            >
+                wire:click="resetSearch()">
 
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 fill-gray-500  ">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -57,8 +57,7 @@
                                 ( count($item->consumptions) > 0 ?  $item->consumptions->sum('qty') : 0 ) > 0 )
 
                                     <button class="btn bg-green-200"
-                                    wire:click="openItemBatchModal({{ $item->id }})"
-                                    >
+                                    wire:click="openItemBatchModal({{ $item->id }})">
 
 
                                     InStore: {{
@@ -84,7 +83,6 @@
 
                             @endif
 
-
                         </div>
 
 
@@ -101,15 +99,14 @@
 
 
     <div class="container mx-auto px-10">
-
         {{ $items->links() }}
     </div>
 
 
     {{-- MOdal For Badches --}}
     <div class="fixed inset-0 z-10 overflow-y-auto"
-        x-show="modalShow"
-    >
+        x-show="modalShow">
+
 
 
         <div
@@ -126,8 +123,8 @@
 
                     <div class="relative">
 
-                        <button
-                            wire:click="closeItemBatchModal"
+                        <button class="btn"
+                            wire:click="closeItemBatchModal()"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 absolute top-0 right-0">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -135,9 +132,15 @@
                         </button>
                     </div>
 
-                    <div class="ooverflow-x-auto rounded-lg shadow">
+                    <div class="overflow-x-auto rounded-lg shadow">
 
-                       <livewire:Item.item-batches />
+                       {{-- <livewire:Item.item-batches /> --}}
+
+                       @livewire('item.item-batches')
+
+                     {{-- <livewire:item.item-batches /> --}}
+
+
 
                     </div>
                 </div>
@@ -145,6 +148,9 @@
             </div>
 
         </div>
+
+
+
 
 
 

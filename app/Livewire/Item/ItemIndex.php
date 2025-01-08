@@ -30,6 +30,7 @@ class ItemIndex extends Component
     public function closeItemBatchModal()
     {
         $this->showItemBatchModal = false;
+        $this->dispatch('resetFilterBy');
     }
 
     public function resetSearch()
