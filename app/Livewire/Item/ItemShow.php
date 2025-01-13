@@ -6,7 +6,6 @@ use App\Models\BatchNumber;
 use App\Models\Item;
 use App\Models\Receiving;
 use App\Models\ReceivingItem;
-use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -18,6 +17,7 @@ class ItemShow extends Component
     public $item;
     public $name;
     public $openReceivingModal = false;
+    public $openBatchModal = false;
     public  $selectedBtn;
     public $activeBtn = "batches";
     public $selectedBatchId=1;
@@ -37,6 +37,21 @@ class ItemShow extends Component
         $this->openReceivingModal = false;
         $this->dispatch('closeReceivingDetails');
     }
+
+    public function batchModalCloseRequest()
+    {
+        $this->openBatchModal = false;
+
+        $this->dispatch('batchModalCloseRequest');
+    }
+
+
+    public function batchUpdateRequest($batch)
+    {
+        $this->openBatchModal = true;
+        $this->dispatch('batchUpdateRequestData', $batch);
+    }
+
 
     public function mount($item_id)
     {
