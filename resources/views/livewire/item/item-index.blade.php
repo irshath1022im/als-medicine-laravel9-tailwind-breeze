@@ -38,7 +38,7 @@
 
                     <div class="card-header h-20 border my-auto">
                         <div class="card-heading">
-                          <a href="" >
+                          <a href="{{ route('itemShow', ['item_id' => $item->id]) }}" >
                             <button class="btn btn-info">{{ $item->erp_code }}</button> {{ $item->name }}
                           </a>
                         </div>
