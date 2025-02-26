@@ -62,6 +62,8 @@
                                           </svg>
                                     </div>
 
+                                    <div>{{ $batch->id }}</div>
+
                                     <div class=" px-2 basis-1/5 uppercase text-sm">
                                         {{ $batch->batch_number }}
                                     </div>

@@ -65,3 +65,20 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 
 ## REQUIREMENTS - 1
+
+    ** HomePage - direct to single page
+    ** New Badge Creation - Done
+    ** Badge Edit - 80%
+    ** Badge - Delete
+    ** PopUp - Receivings
+    ** PopUp - Consumptions
+    ** Consumption - Create
+    ** Consumption - Edit
+    ** Consumption - Delete
+    ** Receiving - Create
+    ** Receiving - Edit
+    ** Receiving - Delete
+    ** App Information
+
+
+

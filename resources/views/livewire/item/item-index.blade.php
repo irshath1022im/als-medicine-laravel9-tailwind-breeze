@@ -35,10 +35,11 @@
             @foreach ($items as $item)
 
                 <div class="card w-72 p-2 my-2 shadow-lg">
-                    <div class="card-header mb-2 h-12">
+
+                    <div class="card-header h-20 border my-auto">
                         <div class="card-heading">
                           <a href="" >
-                            {{ $item->id }} / {{ $item->name }}
+                            <button class="btn btn-info">{{ $item->erp_code }}</button> {{ $item->name }}
                           </a>
                         </div>
                     </div>
