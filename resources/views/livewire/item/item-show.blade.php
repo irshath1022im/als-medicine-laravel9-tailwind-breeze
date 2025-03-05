@@ -70,12 +70,16 @@
 
                                     <div class=" basis-4/5 flex justify-end">
 
+                                        <x-button class="btn btn-delete bg-red-600 hover:bg-orange-200"
+                                            wire:click="removeBadch({{ $batch }})"
+                                        >Delete</x-button>
                                         <x-button>Expire :  <span>{{ $batch->expiry_date}}</span></x-button>
                                         <x-button class=" ml-1 {{ $batch->expiry_date > Carbon\Carbon::now() ? 'bg-green-400' : 'bg-red-400'}}">
                                             Days :
                                             {{ $batch->expiry_date < Carbon\Carbon::now() ? '-' : ''}}
                                            {{ Carbon\Carbon::parse($batch->expiry_date)->diffInDays()}} <span></span>
                                         </x-button>
+
                                     </div>
 
                                 </div>

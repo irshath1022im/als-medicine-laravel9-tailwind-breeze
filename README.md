@@ -70,6 +70,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
     ** New Badge Creation - Done
     ** Badge Edit - 80%
     ** Badge - Delete
+    Important! Before delete, has to check , it has consumption or not...
     ** PopUp - Receivings
     ** PopUp - Consumptions
     ** Consumption - Create

@@ -21,6 +21,7 @@ class ItemShow extends Component
     public  $selectedBtn;
     public $activeBtn = "batches";
     public $selectedBatchId=1;
+    public $deleteBatch;
 
     public $receivings = [];
 
@@ -58,6 +59,18 @@ class ItemShow extends Component
         $this->item = Item::find($item_id);
     }
 
+    public function removeBadch($batch)
+    {
+
+        
+
+        $this->deleteBatch = $batch['id'];
+
+        BatchNumber::find($this->deleteBatch)->delete($this->deleteBatch);
+
+
+
+    }
 
 
 
