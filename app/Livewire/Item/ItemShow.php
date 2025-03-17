@@ -18,10 +18,11 @@ class ItemShow extends Component
     public $name;
     public $openReceivingModal = false;
     public $openBatchModal = false;
-    public  $selectedBtn;
+    public $selectedBtn;
     public $activeBtn = "batches";
     public $selectedBatchId=1;
     public $deleteBatch;
+    public $newConsumeModal = false;
 
     public $receivings = [];
 
@@ -32,6 +33,7 @@ class ItemShow extends Component
         $this->openReceivingModal = true;
         $this->dispatch('getReceivingDetails', $batch_id);
     }
+
 
     public function closeReceivingPanels()
     {
@@ -59,16 +61,19 @@ class ItemShow extends Component
         $this->item = Item::find($item_id);
     }
 
+
     public function removeBadch($batch)
     {
-
-        
-
         $this->deleteBatch = $batch['id'];
-
         BatchNumber::find($this->deleteBatch)->delete($this->deleteBatch);
+    }
 
 
+    public function addConsumption($batch)
+    {
+
+        $this->newConsumeModal = true;
+        $this->dispatch('newConsumeRequest',[$batch]);
 
     }
 
@@ -81,4 +86,8 @@ class ItemShow extends Component
             ->extends('components.layouts.app')
         ;
     }
+
+
+
+
 }

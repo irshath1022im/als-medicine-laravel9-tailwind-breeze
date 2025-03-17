@@ -3,7 +3,8 @@
     x-data="{
             openReceivingModal : @entangle('openReceivingModal'),
             openConsumptionModal : false,
-            openBatchModal: @entangle('openBatchModal')
+            openBatchModal: @entangle('openBatchModal'),
+            newConsumptionModal : @entangle('newConsumeModal')
             }"
 
 >
@@ -19,7 +20,12 @@
                     </svg>
               </span>
               NEW BADGE</x-button>
+
+              <button class="btn btn-blue">
+
+              NEW RECEIVING</button>
         </div>
+
 
 
      {{-- ITEM CARD --}}
@@ -71,6 +77,7 @@
                                     <div class=" basis-4/5 flex justify-end">
 
                                         <x-button class="btn btn-delete bg-red-600 hover:bg-orange-200"
+                                            wire:confirm="Do you want remove?"
                                             wire:click="removeBadch({{ $batch }})"
                                         >Delete</x-button>
                                         <x-button>Expire :  <span>{{ $batch->expiry_date}}</span></x-button>
@@ -85,14 +92,21 @@
                                 </div>
 
                                 <div class="flex basis-1/4  m-1 p-2 justify-end">
-                                    <x-button class="mx-1 bg-orange-200 text-black hover:text-white"
+                                    {{-- <x-button class="mx-1 bg-orange-200 text-black hover:text-white"
                                         wire:click="openReceivingModalRequest({{ $batch->id }})"
-                                    >Receivings</x-button>
+                                    >Receivings</x-button> --}}
+
+                                    <button
+                                        class="btn btn-info bg-orange-300 text-black hover:text-white"
+                                        wire:click="addConsumption({{ $batch }})"
+                                        >
+                                     CONSUME
+                                    <button>
 
                                     <x-button
                                         class="bg-orange-300 text-black hover:text-white"
                                         x-on:click="openConsumptionModal = true">
-                                     Consumptions
+                                        logs
                                     </x-button>
 
 
@@ -236,6 +250,33 @@
      </div>
 
     </div>
+
+
+
+    {{-- Consumption Modal --}}
+
+        <div class="modal"
+            x-show="newConsumptionModal"
+        >
+
+            <div class="modal-overlay">
+
+            </div>
+
+                <div class="modal-body">
+                    <div class="modal-content">
+
+                        <div>
+                            <button class="btn btn-info"
+                                x-on:click=" newConsumptionModal = false" >close</button>
+                        </div>
+
+                       @livewire('consumption.new-consumption-form')
+
+                    </div>
+                </div>
+
+        </div>
 
 
 
