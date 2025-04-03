@@ -1,4 +1,5 @@
 <div
+    class="md:text-sm"
     x-cloak
     x-data="{
             openReceivingModal : @entangle('openReceivingModal'),
@@ -10,6 +11,7 @@
 >
 
 
+{{-- @dump($item); --}}
 
         {{-- menu bar --}}
         <div class="p-2 border flex justify-end">
@@ -98,7 +100,7 @@
 
                                     <button
                                         class="btn btn-info bg-orange-300 text-black hover:text-white"
-                                        wire:click="addConsumption({{ $batch }})"
+                                        wire:click="addConsumption( {{ $item }} , {{ $batch }})"
                                         >
                                      CONSUME
                                     <button>

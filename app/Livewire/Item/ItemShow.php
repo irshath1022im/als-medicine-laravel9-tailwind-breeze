@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Item;
 
+use App\Livewire\Consumption\NewConsumptionForm;
 use App\Models\BatchNumber;
+use App\Models\Consumption;
 use App\Models\Item;
 use App\Models\Receiving;
 use App\Models\ReceivingItem;
@@ -23,6 +25,7 @@ class ItemShow extends Component
     public $selectedBatchId=1;
     public $deleteBatch;
     public $newConsumeModal = false;
+
 
     public $receivings = [];
 
@@ -59,6 +62,22 @@ class ItemShow extends Component
     public function mount($item_id)
     {
         $this->item = Item::find($item_id);
+
+
+    //     if(count(  $this->item->batch['receiving_items']) >= 1){
+
+    //     }
+
+    //     $totalReceiving = ReceivingItem::where('batch_number_id', $this->batch_number_id)->sum('qty');
+
+    // //total sonsumptions
+
+    //     $totalConsumption = Consumption::where('batch_number_id', $this->batch_number_id)->sum('qty');
+
+    //     $this->availableQty = $initialQty+$totalReceiving-$totalConsumption;
+
+
+
     }
 
 
@@ -69,11 +88,12 @@ class ItemShow extends Component
     }
 
 
-    public function addConsumption($batch)
+    public function addConsumption($item, $batch)
     {
 
+        // dd($item, $batch);
         $this->newConsumeModal = true;
-        $this->dispatch('newConsumeRequest',[$batch]);
+        $this->dispatch('newConsumeRequest', $item, $batch)->to(NewConsumptionForm::class);
 
     }
 
@@ -81,7 +101,13 @@ class ItemShow extends Component
 
     public function render()
     {
-        $result = BatchNumber::where('item_id', $this->item_id)->get();
+        $result = BatchNumber::where('item_id', $this->item_id)
+                    // ->with('receiving_items', function($q){
+                    //     return $q->withSum('qty');
+                    // })
+                    ->with('receiving_items')
+                    ->withSum('receiving_items', 'qty')
+                    ->get();
         return view('livewire.item.item-show',['batches' => $result])
             ->extends('components.layouts.app')
         ;
