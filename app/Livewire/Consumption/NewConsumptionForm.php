@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Consumption;
 
+use App\Livewire\Item\BatchCardForItemPage;
+use App\Livewire\Item\ItemShow;
 use App\Models\BatchNumber;
 use App\Models\Consumption;
 use App\Models\ReceivingItem;
@@ -14,19 +16,21 @@ use Livewire\Component;
 class NewConsumptionForm extends Component
 {
 
+    public $expiry_date;
+
+    #[Validate('required')]
     public $date;
     public $location_id=1;
     public $item_id;
     public $batch_number_id;
     public $batch_number;
 
+    #[Validate('required')]
     public $qty;
     public $user_id;
     public $erp_code;
     public $item_name;
-    public $availableQty = 10;
-
-
+    public $availableQty;
 
 
     //old type listerenes
@@ -42,17 +46,12 @@ class NewConsumptionForm extends Component
         $this->erp_code = $item['erp_code'];
         $this->batch_number_id = $batch['id'];
         $this->batch_number = $batch['batch_number'];
+        $this->expiry_date = $batch['expiry_date'];
 
         // initial qty of badge number
 
         $initialQty = $batch['initial_qty'];
-        //total receiving
-    //    dd($batch);
 
-    // dd( count($batch['receiving_items']) >= 1 );
-            if(count($batch['receiving_items']) >= 1){
-
-            }
 
             $totalReceiving = ReceivingItem::where('batch_number_id', $this->batch_number_id)->sum('qty');
 
@@ -65,19 +64,47 @@ class NewConsumptionForm extends Component
 
     public function updatedQty()
     {
-
         $validatedQty = $this->validate(
             ['qty' => 'required|integer|min:1|lte:'.$this->availableQty.''],
             $messages = [
                 'qty.lte:'.$this->availableQty.'' => 'QTY is should be more then avaialble QTY.']
         );
 
-        // $this->availableQty = $totalAvailable ;
+    }
 
 
+    #[On('closeNewConsumeForm')]
 
+    public function closeNewConsumeForm()
+    {
+       $this->resetErrorBag();
+       $this->reset(['date', 'qty']);
 
     }
+
+    public function newConsumeSubmit()
+        {
+
+            $this->validate();
+
+            $data = [
+                'date' => $this->date,
+                'location_id' => $this->location_id,
+                'item_id' => $this->item_id,
+                'batch_number_id'=> $this->batch_number_id,
+                'qty' => $this->qty,
+                'user_id' => 1
+            ];
+
+            Consumption::create($data);
+
+            session()->flash('created', 'New Consumptin is added');
+            $this->resetErrorBag();
+            $this->reset(['date', 'qty']);
+
+
+
+        }
 
     public function render()
     {
