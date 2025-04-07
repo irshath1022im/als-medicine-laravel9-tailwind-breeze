@@ -41,7 +41,7 @@ x-cloak
                             <label for="" class="form-label">Consume Date</label>
                             <input type="date" class="form-controll" wire:model="date">
 
-                            <x-formError field="date"></x-formError>
+                            <x-formerror field="date"></x-formerror>
 
                         </div>
 
@@ -57,7 +57,7 @@ x-cloak
                             + --}}
                             <span>Available Qty: </span><button class="btn btn-info">{{ $availableQty }}</button>
 
-                             <x-formError field="qty"></x-formError>
+                             <x-formerror field="qty"></x-formerror>
 
                         </div>
 
