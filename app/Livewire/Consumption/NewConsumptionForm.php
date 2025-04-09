@@ -87,6 +87,13 @@ class NewConsumptionForm extends Component
 
             $this->validate();
 
+            $validatedQty = $this->validate(
+                ['qty' => 'required|integer|min:1|lte:'.$this->availableQty.''],
+                $messages = [
+                    'qty.lte:'.$this->availableQty.'' => 'QTY is should be more then avaialble QTY.']
+            );
+
+
             $data = [
                 'date' => $this->date,
                 'location_id' => $this->location_id,
