@@ -84,7 +84,7 @@
     }
 
     .table-th{
-        @apply text-left tracking-wide text-sm whitespace-nowrap
+        @apply text-left tracking-wide text-sm whitespace-nowrap border
     }
 
     .table-tr{
@@ -92,7 +92,7 @@
     }
 
     .table-td{
-        @apply px-2 py-3 tracking-wide bg-slate-50 font-['lato'] whitespace-nowrap text-xs
+        @apply px-2 py-3 tracking-wide bg-slate-50 font-['lato'] whitespace-nowrap text-xs border
     }
 }
 
