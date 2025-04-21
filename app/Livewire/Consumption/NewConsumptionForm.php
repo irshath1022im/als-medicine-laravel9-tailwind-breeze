@@ -38,7 +38,7 @@ class NewConsumptionForm extends Component
 
     #[On('newConsumeRequest')]
 
-    public function newConsumeRequest($item, $batch)
+    public function newConsumeRequest($item, $batch, $availableQty)
     {
         // dd($batch);
         $this->item_id = $item['id'];
@@ -47,19 +47,9 @@ class NewConsumptionForm extends Component
         $this->batch_number_id = $batch['id'];
         $this->batch_number = $batch['batch_number'];
         $this->expiry_date = $batch['expiry_date'];
-
-        // initial qty of badge number
-
-        $initialQty = $batch['initial_qty'];
+        $this->availableQty = $availableQty;
 
 
-            $totalReceiving = ReceivingItem::where('batch_number_id', $this->batch_number_id)->sum('qty');
-
-        //total sonsumptions
-
-            $totalConsumption = Consumption::where('batch_number_id', $this->batch_number_id)->sum('qty');
-
-            $this->availableQty = $initialQty+$totalReceiving-$totalConsumption;
     }
 
     public function updatedQty()
@@ -108,6 +98,7 @@ class NewConsumptionForm extends Component
             session()->flash('created', 'New Consumptin is added');
             $this->resetErrorBag();
             $this->reset(['date', 'qty']);
+            $this->dispatch('consumptionAdded');
 
 
 

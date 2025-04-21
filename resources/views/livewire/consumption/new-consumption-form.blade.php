@@ -55,6 +55,9 @@ x-cloak
                             -
                             <button class="btn btn-info">{{ $totalConsumption }}</button>
                             + --}}
+
+
+
                             <span>Available Qty: </span><button class="btn btn-info">{{ $availableQty }}</button>
 
                              <x-formerror field="qty"></x-formerror>

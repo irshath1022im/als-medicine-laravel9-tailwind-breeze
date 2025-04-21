@@ -48,7 +48,7 @@
 
 
 
-        {{-- details --}}
+        {{--Batch details --}}
 
         <div
             x-data="{
