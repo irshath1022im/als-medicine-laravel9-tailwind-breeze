@@ -34,7 +34,7 @@
                 <li class="list-none px-2 py-1 border bg-gray-500 text-white rounded">ITEMS</li>
             </a>
 
-            <a href="#">
+            <a href="{{ route('Consumptions') }}">
                 <li class="list-none px-2 py-1 border bg-gray-500 text-white rounded">CONSUMPTIONS</li>
             </a>
 

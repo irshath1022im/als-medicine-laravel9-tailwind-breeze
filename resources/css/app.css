@@ -80,7 +80,7 @@
         @apply w-[80%]
     }
     .table-head{
-        @apply bg-gray-50 border-b-2 border-gray-200
+        @apply bg-gray-50 border-b-2 border-gray-200 uppercase
     }
 
     .table-th{

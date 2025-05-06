@@ -3,6 +3,7 @@
 use App\Http\Controllers\ItemController;
 use App\Livewire\Item\ItemIndex;
 use App\Livewire\Item\ItemShow;
+use App\Livewire\LandingPages\ConsumptionIndexPage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,7 +32,11 @@ Route::get('/', function () {
 Route::get('items', ItemIndex::class)->name('itemHome');
 Route::get('items/{item_id}', ItemShow::class)->name('itemShow');
 
+Route::get('consumptions', ConsumptionIndexPage::class )->name('Consumptions');
 // Route::resource('items', ItemController::class);
+
+
+
 
 
 

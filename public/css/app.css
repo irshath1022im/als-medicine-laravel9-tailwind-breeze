@@ -816,6 +816,7 @@ select {
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+  text-transform: uppercase;
 }
 .table-th {
   white-space: nowrap;
